@@ -1,4 +1,4 @@
-import { SET_CELLS } from './actionTypes';
+import { ADD_CELL, REMOVE_CELL, SET_CELLS } from './actionTypes';
 import { makeKey } from '../../../utils/helpers';
 
 const aroundCells = [];
@@ -89,6 +89,13 @@ export function setCells(cells) {
     };
 }
 
+export function clearCells() {
+    return {
+        type: SET_CELLS,
+        cells: [],
+    };
+}
+
 export function randomizeCells() {
     return (dispatch, getState) => {
         const { randomAreaSize, randomAreaPopulation } = getState().controls;
@@ -109,5 +116,21 @@ export function randomizeCells() {
             type: SET_CELLS,
             cells,
         });
+    };
+}
+
+export function addCell({ x, y }) {
+    return {
+        type: ADD_CELL,
+        x,
+        y,
+    };
+}
+
+export function removeCell({ x, y }) {
+    return {
+        type: REMOVE_CELL,
+        x,
+        y,
     };
 }

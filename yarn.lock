@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@avinlab/react-size-me@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@avinlab/react-size-me/-/react-size-me-1.1.5.tgz#6fbc5bdb9984f52ff58ef7195cba28fce766cbf2"
+  integrity sha512-7KIAmIBXEKTh+1QcNIAg+LFGr64mfV1vLJyrqLRiuO75+CAOrqz28BHyGwq6VF3tfAuKMHO7947dFkHpOZAKuA==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    element-resize-detector "^1.1.14"
+
 "@avinlab/repeat@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@avinlab/repeat/-/repeat-1.0.0.tgz#70cb88da2a02d9c6219e457fac7a845090f4689f"
@@ -1793,6 +1801,11 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
+batch-processor@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/batch-processor/-/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"
+  integrity sha1-dclcMrdI4IUNEMKxaPa9vpiRrOg=
+
 batch@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.6.1.tgz#dc34314f4e679318093fc760272525f94bf25c16"
@@ -2417,11 +2430,6 @@ clone-deep@^2.0.1:
     is-plain-object "^2.0.4"
     kind-of "^6.0.0"
     shallow-clone "^1.0.0"
-
-clsx@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.0.1.tgz#6d956b00ecc771185bf0ec47383f5a06d941b11f"
-  integrity sha512-PtvbklBG/M2NVzwaYqTGcD+EqMXLNrec1lpgNkz07CoOsYnXsCBjde24Tki8wBKi9jrWX2rJnmKoMJoYUc3zhQ==
 
 co@^4.6.0:
   version "4.6.0"
@@ -3370,6 +3378,13 @@ elegant-spinner@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
   integrity sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=
+
+element-resize-detector@^1.1.14:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/element-resize-detector/-/element-resize-detector-1.2.0.tgz#63344fd6f4e5ecff6f018d027e17b281fd4fa338"
+  integrity sha512-UmhNB8sIJVZeg56gEjgmMd6p37sCg8j8trVW0LZM7Wzv+kxQ5CnRHcgRKBTB/kFUSn3e7UP59kl2V2U8Du1hmg==
+  dependencies:
+    batch-processor "1.0.0"
 
 elliptic@^6.0.0:
   version "6.4.1"

@@ -1,15 +1,17 @@
+@import 'src/styles/variables.scss';
+
 .main {
-    color: #959da5;
-    padding-bottom: 20px;
+    color: $gray1;
+    text-align: center;
 }
 
 .octicon {
-    fill: #e1e8ed;
-    opacity: 0.1;
+    fill: $gray1;
+    opacity: 0.5;
     transition: opacity 200ms linear;
     width: 40px;
 
     &:hover{
-        opacity: 0.8;
+        opacity: 0.9;
     }
 }

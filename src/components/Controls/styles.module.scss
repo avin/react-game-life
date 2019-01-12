@@ -5,8 +5,9 @@ $padding: 10px;
 
 $controlMarginBottom: 10px;
 
-.controls{
+.controls {
     height: 100%;
+    box-sizing: border-box;
     width: 300px;
     background-color: $light-gray1;
     border-right: 1px solid $gray3;
@@ -16,27 +17,49 @@ $controlMarginBottom: 10px;
     padding: $padding;
     display: flex;
     flex-direction: column;
-    white-space: nowrap;
 
-    :global{
-        button{
+    :global {
+        button {
             width: 100%;
+            padding: 5px 10px;
         }
     }
 }
 
-.control{
+.control {
     display: flex;
     margin-bottom: $controlMarginBottom;
+    white-space: nowrap;
 }
 
-.rangeLabel{
+.rangeLabel {
     line-height: 30px;
     margin-right: 5px;
 }
 
-.separator{
-    background-color: $dark-gray3;
+.separator {
+    background-color: $gray3;
     height: 1px;
+    margin-top: $controlMarginBottom * 1;
+    margin-bottom: $controlMarginBottom * 2;
+    margin-left: -$controlMarginBottom;
+    margin-right: -$controlMarginBottom;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.hint{
+    text-align: center;
     margin-bottom: $controlMarginBottom;
+}
+.icon{
+    margin-right: 5px;
+}
+
+.selectBox{
+    width: 100%;
 }
