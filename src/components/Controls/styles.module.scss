@@ -1,0 +1,42 @@
+@import 'src/styles/variables.scss';
+
+$contentHeight: 24px;
+$padding: 10px;
+
+$controlMarginBottom: 10px;
+
+.controls{
+    height: 100%;
+    width: 300px;
+    background-color: $light-gray1;
+    border-right: 1px solid $gray3;
+    flex-shrink: 0;
+    flex-grow: 0;
+    line-height: $contentHeight;
+    padding: $padding;
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+
+    :global{
+        button{
+            width: 100%;
+        }
+    }
+}
+
+.control{
+    display: flex;
+    margin-bottom: $controlMarginBottom;
+}
+
+.rangeLabel{
+    line-height: 30px;
+    margin-right: 5px;
+}
+
+.separator{
+    background-color: $dark-gray3;
+    height: 1px;
+    margin-bottom: $controlMarginBottom;
+}
