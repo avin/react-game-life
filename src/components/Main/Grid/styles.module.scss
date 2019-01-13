@@ -1,0 +1,29 @@
+@import 'src/styles/variables.scss';
+
+.grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10;
+    animation: appear-grid;
+    animation-duration: 200ms;
+}
+
+@keyframes appear-grid {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.line {
+    stroke: rgba($dark-gray3, 0.1);
+    stroke-width: 0.5;
+}
+
+.boldLine {
+    stroke-width: 1;
+}

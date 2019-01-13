@@ -5,6 +5,7 @@
   "dependencies": {
     "@avinlab/react-size-me": "^1.1.5",
     "@avinlab/repeat": "^1.0.0",
+    "clsx": "^1.0.1",
     "node-sass": "^4.11.0",
     "normalize.css": "^8.0.1",
     "react": "^16.7.0",

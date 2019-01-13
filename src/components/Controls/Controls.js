@@ -52,8 +52,13 @@ export class Controls extends React.Component {
         updateControls({ renderMode: e.currentTarget.value });
     };
 
+    handleChangeShowGrid = e => {
+        const { updateControls } = this.props;
+        updateControls({ showGrid: e.currentTarget.checked });
+    };
+
     render() {
-        const { started, speed, randomAreaSize, randomAreaPopulation, cellSize, renderMode } = this.props;
+        const { started, speed, randomAreaSize, randomAreaPopulation, cellSize, renderMode, showGrid } = this.props;
 
         return (
             <div className={styles.controls}>
@@ -93,6 +98,13 @@ export class Controls extends React.Component {
                         onChange={this.handleChangeCellSize}
                         value={cellSize}
                     />
+                </div>
+
+                <div className={styles.control}>
+                    <label htmlFor="showGrid" className={styles.rangeLabel}>
+                        Show grid:
+                    </label>
+                    <input type="checkbox" name="showGrid" onChange={this.handleChangeShowGrid} checked={showGrid} />
                 </div>
 
                 <div className={styles.separator} />
@@ -154,7 +166,7 @@ export class Controls extends React.Component {
                         value={renderMode}
                     >
                         <option value="html">HTML (Pure React)</option>
-                        <option value="canvas">Canvas</option>
+                        <option value="canvas">Canvas (Most performance)</option>
                     </select>
                 </div>
 
@@ -171,6 +183,7 @@ function mapStateToProps(state, ownProps) {
         renderMode: state.controls.renderMode,
         speed: state.controls.speed,
         cellSize: state.controls.cellSize,
+        showGrid: state.controls.showGrid,
         randomAreaSize: state.controls.randomAreaSize,
     };
 }

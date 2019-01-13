@@ -2,6 +2,10 @@
 
 > The Game of Life in React+Redux
 
+## What is it?
+
+It's the realisation of the simple but awesome cellular automaton. There are more details on [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
+
 ## Features
 
 * :art: Free draw own cells by mouse.
