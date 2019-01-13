@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styles from './styles.module.scss';
 import Cell from './Cell/Cell';
 import { makeKey } from '../../../utils/helpers';
+import Grid from '../Grid/Grid';
 
 export class DivCells extends React.Component {
     renderCells() {
@@ -15,7 +16,14 @@ export class DivCells extends React.Component {
     }
 
     render() {
-        return <div className={styles.cellsContainer}>{this.renderCells()}</div>;
+        const { width, height } = this.props;
+
+        return (
+            <div className={styles.container}>
+                <div className={styles.cellsContainer}>{this.renderCells()}</div>
+                <Grid width={width} height={height} />
+            </div>
+        );
     }
 }
 

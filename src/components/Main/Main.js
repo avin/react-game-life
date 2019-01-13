@@ -6,7 +6,6 @@ import styles from './styles.module.scss';
 import { addCell, evaluateCells, removeCell } from '../../redux/modules/cells/actions';
 import DivCells from './DivCells/DivCells';
 import CanvasCells from './CanvasCells/CanvasCells';
-import Grid from './Grid/Grid';
 
 const DRAW_MODES = {
     NONE: 0,
@@ -98,20 +97,11 @@ export class Main extends React.Component {
         const { renderMode } = this.props;
         switch (renderMode) {
             case 'html':
-                return <DivCells />;
+                return <SizeMe>{({ width, height }) => <DivCells width={width} height={height} />}</SizeMe>;
             case 'canvas':
                 return <SizeMe>{({ width, height }) => <CanvasCells width={width} height={height} />}</SizeMe>;
             default:
         }
-    }
-
-    renderGrid() {
-        const { showGrid } = this.props;
-        if (!showGrid) {
-            return null;
-        }
-
-        return <SizeMe>{({ width, height }) => <Grid width={width} height={height} />}</SizeMe>;
     }
 
     render() {
@@ -128,7 +118,6 @@ export class Main extends React.Component {
                 onContextMenu={this.handleContextMenu}
             >
                 {this.renderContent()}
-                {this.renderGrid()}
             </div>
         );
     }
@@ -140,7 +129,6 @@ function mapStateToProps(state, ownProps) {
         renderMode: state.controls.renderMode,
         started: state.controls.started,
         cellSize: state.controls.cellSize,
-        showGrid: state.controls.showGrid,
     };
 }
 

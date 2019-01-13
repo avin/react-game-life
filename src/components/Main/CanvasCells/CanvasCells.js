@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import styles from './styles.module.scss';
+import Grid from '../Grid/Grid';
 
 export class CanvasCells extends React.Component {
     renderCells() {
@@ -30,13 +32,16 @@ export class CanvasCells extends React.Component {
     render() {
         const { width, height } = this.props;
         return (
-            <canvas
-                width={width}
-                height={height}
-                ref={i => {
-                    this.canvasRef = i;
-                }}
-            />
+            <div className={styles.container}>
+                <canvas
+                    width={width}
+                    height={height}
+                    ref={i => {
+                        this.canvasRef = i;
+                    }}
+                />
+                <Grid width={width} height={height} />
+            </div>
         );
     }
 }

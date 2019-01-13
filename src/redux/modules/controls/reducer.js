@@ -7,7 +7,7 @@ const initialState = {
     randomAreaSize: +(localStorage.getItem(`life:randomAreaSize`) || 20),
     randomAreaPopulation: +(localStorage.getItem(`life:randomAreaPopulation`) || 5),
     renderMode: localStorage.getItem(`life:renderMode`) || 'html',
-    showGrid: localStorage.getItem(`life:showGrid`) || false,
+    showGrid: JSON.stringify(localStorage.getItem(`life:showGrid`)) || false,
 };
 
 export default function reducer(state = initialState, action = {}) {

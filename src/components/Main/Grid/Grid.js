@@ -59,7 +59,11 @@ export class Grid extends React.Component {
     }
 
     render() {
-        const { width, height } = this.props;
+        const { width, height, showGrid } = this.props;
+
+        if (!showGrid) {
+            return null;
+        }
 
         return (
             <svg width={width} height={height} className={styles.grid}>
@@ -72,6 +76,7 @@ export class Grid extends React.Component {
 function mapStateToProps(state, ownProps) {
     return {
         cellSize: state.controls.cellSize,
+        showGrid: state.controls.showGrid,
     };
 }
 
