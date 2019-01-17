@@ -22,6 +22,7 @@ $controlMarginBottom: 10px;
         button {
             width: 100%;
             padding: 5px 10px;
+            min-height: 33px;
         }
 
         input[type=checkbox]{
@@ -41,6 +42,17 @@ $controlMarginBottom: 10px;
     display: flex;
     margin-bottom: $controlMarginBottom;
     white-space: nowrap;
+}
+
+.rules{
+    :global{
+        input{
+            width: 40px;
+            padding: 0 5px;
+        }
+    }
+
+    margin-bottom: 10px;
 }
 
 .rangeLabel {
@@ -73,4 +85,8 @@ $controlMarginBottom: 10px;
 
 .selectBox{
     width: 100%;
+}
+
+.name{
+    margin-right: 10px;
 }

@@ -8,7 +8,11 @@ const initialState = {
     randomAreaPopulation: +(localStorage.getItem(`life:randomAreaPopulation`) || 5),
     renderMode: localStorage.getItem(`life:renderMode`) || 'canvas',
     showGrid: JSON.parse(localStorage.getItem(`life:showGrid`)) || false,
-    cleanLevel: 100,
+    cleanLevel: +(localStorage.getItem(`life:cleanLevel`) || 100),
+    stayAliveFrom: +(localStorage.getItem(`life:stayAliveFrom`) || 2),
+    stayAliveTo: +(localStorage.getItem(`life:stayAliveTo`) || 3),
+    newLifeFrom: +(localStorage.getItem(`life:newLifeFrom`) || 3),
+    newLifeTo: +(localStorage.getItem(`life:newLifeTo`) || 3),
 };
 
 export default function reducer(state = initialState, action = {}) {

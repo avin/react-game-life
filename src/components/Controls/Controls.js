@@ -83,8 +83,50 @@ export class Controls extends React.Component {
         );
     }
 
+    handleChangeStayAliveFrom = e => {
+        const { updateControls } = this.props;
+        updateControls({ stayAliveFrom: Number(e.currentTarget.value) || 0 });
+    };
+
+    handleChangeStayAliveTo = e => {
+        const { updateControls } = this.props;
+        updateControls({ stayAliveTo: Number(e.currentTarget.value) || 0 });
+    };
+
+    handleChangeNewLifeFrom = e => {
+        const { updateControls } = this.props;
+        updateControls({ newLifeFrom: Number(e.currentTarget.value) || 0 });
+    };
+
+    handleChangeNewLifeTo = e => {
+        const { updateControls } = this.props;
+        updateControls({ newLifeTo: Number(e.currentTarget.value) || 0 });
+    };
+
+    handleResetRules = () => {
+        const { updateControls } = this.props;
+        updateControls({
+            stayAliveFrom: 2,
+            stayAliveTo: 3,
+            newLifeFrom: 3,
+            newLifeTo: 3,
+        });
+    };
+
     render() {
-        const { started, speed, randomAreaSize, randomAreaPopulation, cellSize, renderMode, showGrid } = this.props;
+        const {
+            started,
+            speed,
+            randomAreaSize,
+            randomAreaPopulation,
+            cellSize,
+            renderMode,
+            showGrid,
+            stayAliveFrom,
+            stayAliveTo,
+            newLifeFrom,
+            newLifeTo,
+        } = this.props;
 
         return (
             <div className={styles.controls}>
@@ -131,6 +173,49 @@ export class Controls extends React.Component {
                         Show grid:
                     </label>
                     <input type="checkbox" name="showGrid" onChange={this.handleChangeShowGrid} checked={showGrid} />
+                </div>
+
+                <div className={styles.separator} />
+
+                <div className={styles.rules}>
+                    <div>
+                        <span className={styles.name}>Stay alive:</span>
+                        <b>&gt;=&nbsp;</b>
+                        <input
+                            type="input"
+                            name="stayAliveFrom"
+                            value={stayAliveFrom}
+                            onChange={this.handleChangeStayAliveFrom}
+                        />
+                        &nbsp;
+                        <b>&lt;=&nbsp;</b>
+                        <input
+                            type="input"
+                            name="stayAliveTo"
+                            value={stayAliveTo}
+                            onChange={this.handleChangeStayAliveTo}
+                        />
+                    </div>
+                </div>
+
+                <div className={styles.rules}>
+                    <div>
+                        <span className={styles.name}>New life:</span>
+                        <b>&gt;=&nbsp;</b>
+                        <input
+                            type="input"
+                            name="newLifeFrom"
+                            value={newLifeFrom}
+                            onChange={this.handleChangeNewLifeFrom}
+                        />
+                        &nbsp;
+                        <b>&lt;=&nbsp;</b>
+                        <input type="input" name="newLifeTo" value={newLifeTo} onChange={this.handleChangeNewLifeTo} />
+                    </div>
+                </div>
+
+                <div className={styles.control}>
+                    <button onClick={this.handleResetRules}>Reset rules</button>
                 </div>
 
                 <div className={styles.separator} />
@@ -214,6 +299,11 @@ function mapStateToProps(state, ownProps) {
         showGrid: state.controls.showGrid,
         randomAreaSize: state.controls.randomAreaSize,
         cleanLevel: state.controls.cleanLevel,
+
+        stayAliveFrom: state.controls.stayAliveFrom,
+        stayAliveTo: state.controls.stayAliveTo,
+        newLifeFrom: state.controls.newLifeFrom,
+        newLifeTo: state.controls.newLifeTo,
     };
 }
 

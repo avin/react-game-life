@@ -15,6 +15,8 @@ export function evaluateCells() {
     return (dispatch, getState) => {
         const { cells } = getState();
 
+        const { stayAliveFrom, stayAliveTo, newLifeFrom, newLifeTo } = getState().controls;
+
         // Grab all cells for calculation
         const calculateCells = {};
         cells.forEach(cell => {
@@ -62,17 +64,15 @@ export function evaluateCells() {
                 }
             });
 
-            if (filled && (countFilledAround === 2 || countFilledAround === 3)) {
+            if (filled && (countFilledAround >= stayAliveFrom && countFilledAround <= stayAliveTo)) {
                 // Just stay alive
                 resultCells.push([x, y]);
-            } else if (filled && countFilledAround > 3) {
-                // Overpopulation - die
-            } else if (filled && countFilledAround < 2) {
-                // Loneliness - die
-            } else if (!filled && countFilledAround === 3) {
+            } else if (!filled && countFilledAround >= newLifeFrom && countFilledAround <= newLifeTo) {
                 // New life
                 resultCells.push([x, y]);
             }
+
+            // Else if Overpopulation or Loneliness - die!
         }
 
         dispatch({
