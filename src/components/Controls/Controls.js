@@ -57,6 +57,32 @@ export class Controls extends React.Component {
         updateControls({ showGrid: e.currentTarget.checked });
     };
 
+    handleChangeCleanLevel = e => {
+        const { updateControls } = this.props;
+        updateControls({ cleanLevel: Number(e.currentTarget.value) });
+    };
+
+    renderCanvasOptions() {
+        const { cleanLevel } = this.props;
+        return (
+            <>
+                <div className={styles.control}>
+                    <label htmlFor="cleanLevel" className={styles.rangeLabel}>
+                        Clean level:
+                    </label>
+                    <input
+                        type="range"
+                        name="cleanLevel"
+                        min="0"
+                        max="100"
+                        onChange={this.handleChangeCleanLevel}
+                        value={cleanLevel}
+                    />
+                </div>
+            </>
+        );
+    }
+
     render() {
         const { started, speed, randomAreaSize, randomAreaPopulation, cellSize, renderMode, showGrid } = this.props;
 
@@ -170,6 +196,8 @@ export class Controls extends React.Component {
                     </select>
                 </div>
 
+                {renderMode === 'canvas' && this.renderCanvasOptions()}
+
                 <div className="filler" />
                 <GitHubLink />
             </div>
@@ -185,6 +213,7 @@ function mapStateToProps(state, ownProps) {
         cellSize: state.controls.cellSize,
         showGrid: state.controls.showGrid,
         randomAreaSize: state.controls.randomAreaSize,
+        cleanLevel: state.controls.cleanLevel,
     };
 }
 

@@ -5,9 +5,19 @@ import Grid from '../Grid/Grid';
 
 export class CanvasCells extends React.Component {
     renderCells() {
-        const { cells, cellSize, width, height } = this.props;
+        const { cells, cellSize, width, height, cleanLevel } = this.props;
         const ctx = this.canvasRef.getContext('2d');
-        ctx.clearRect(0, 0, width, height);
+        const ctx2 = this.canvasTempRef.getContext('2d');
+
+        ctx.shadowBlur = 0;
+
+        if (width && height) {
+            ctx2.clearRect(0, 0, width, height);
+            ctx2.globalAlpha = (100 - cleanLevel) / 100;
+            ctx2.drawImage(this.canvasRef, 0, 0);
+            ctx.clearRect(0, 0, width, height);
+            ctx.drawImage(this.canvasTempRef, 0, 0);
+        }
 
         const centerWidth = Math.floor(width / 2);
         const centerHeight = Math.floor(height / 2);
@@ -26,6 +36,10 @@ export class CanvasCells extends React.Component {
     }
 
     componentDidMount() {
+        // const {width, height} = this.props;
+        // const ctx = this.canvasRef.getContext('2d');
+        // ctx.clearRect(0, 0, width, height);
+
         this.renderCells();
     }
 
@@ -40,6 +54,14 @@ export class CanvasCells extends React.Component {
                         this.canvasRef = i;
                     }}
                 />
+                <canvas
+                    width={width}
+                    height={height}
+                    ref={i => {
+                        this.canvasTempRef = i;
+                    }}
+                    style={{ display: 'none' }}
+                />
                 <Grid width={width} height={height} />
             </div>
         );
@@ -50,6 +72,7 @@ function mapStateToProps(state, ownProps) {
     return {
         cells: state.cells,
         cellSize: state.controls.cellSize,
+        cleanLevel: state.controls.cleanLevel,
     };
 }
 
